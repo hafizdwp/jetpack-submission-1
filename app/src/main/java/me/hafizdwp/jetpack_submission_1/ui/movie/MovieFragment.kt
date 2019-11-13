@@ -4,15 +4,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.movie_fragment.*
 import me.hafizdwp.jetpack_submission_1.R
 import me.hafizdwp.jetpack_submission_1.base.BaseFragment
-import me.hafizdwp.jetpack_submission_1.data.DummyData
 import me.hafizdwp.jetpack_submission_1.data.model.MovieModel
 import me.hafizdwp.jetpack_submission_1.ui.MainActivity
+import me.hafizdwp.jetpack_submission_1.ui.detail.DetailActivity
+import me.hafizdwp.jetpack_submission_1.utils.obtainViewModel
 
 /**
  * @author hafizdwp
  * 11/11/2019
  **/
-class MovieFragment : BaseFragment<MainActivity>(), MovieActionListener {
+class MovieFragment : BaseFragment<MainActivity, MovieViewModel>(), MovieActionListener {
 
     companion object {
         fun newInstance() = MovieFragment()
@@ -20,15 +21,21 @@ class MovieFragment : BaseFragment<MainActivity>(), MovieActionListener {
 
     override val layoutRes: Int
         get() = R.layout.movie_fragment
+    override val mViewModel: MovieViewModel
+        get() = obtainViewModel()
 
     var mAdapter: MovieAdapter? = null
 
 
     override fun onReady() {
+
+        val listMovies = mViewModel.getListMovie()
+
         mAdapter = MovieAdapter(
-            items = DummyData.Movies.getListMovies(),
-            listener = this@MovieFragment
+                items = listMovies,
+                listener = this@MovieFragment
         )
+
         recyclerView.apply {
             adapter = mAdapter
             layoutManager = GridLayoutManager(mContext, 6).apply {
@@ -50,6 +57,8 @@ class MovieFragment : BaseFragment<MainActivity>(), MovieActionListener {
      * ---------------------------------------------------------------------------------------------
      * */
     override fun onMovieClick(data: MovieModel) {
-
+        DetailActivity.startActivity(
+                context = mContext,
+                movieModel = data)
     }
 }

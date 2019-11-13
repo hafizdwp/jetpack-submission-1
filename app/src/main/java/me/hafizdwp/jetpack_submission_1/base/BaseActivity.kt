@@ -17,8 +17,10 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(layoutRes)
 
+        onExtractIntent()
         onReady()
     }
 
     abstract fun onReady()
+    abstract fun onExtractIntent()
 }

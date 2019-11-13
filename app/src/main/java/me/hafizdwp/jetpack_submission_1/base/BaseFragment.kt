@@ -12,13 +12,14 @@ import androidx.fragment.app.Fragment
  * @author hafizdwp
  * 11/11/2019
  **/
-abstract class BaseFragment<ACTIVITY : BaseActivity> : Fragment() {
+abstract class BaseFragment<ACTIVITY : BaseActivity, VM: BaseViewModel> : Fragment() {
 
     lateinit var mContext: Context
     lateinit var mActivity: ACTIVITY
 
     @get:LayoutRes
     abstract val layoutRes: Int
+    abstract val mViewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

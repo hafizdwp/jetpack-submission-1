@@ -19,6 +19,10 @@ class MainActivity : BaseActivity() {
     var mPagerAdapter: BasePagerAdapter? = null
 
 
+    override fun onExtractIntent() {
+
+    }
+
     override fun onReady() {
         mPagerAdapter = BasePagerAdapter(supportFragmentManager)
         mPagerAdapter?.addFragment(

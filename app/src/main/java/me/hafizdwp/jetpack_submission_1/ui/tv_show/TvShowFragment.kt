@@ -7,12 +7,14 @@ import me.hafizdwp.jetpack_submission_1.base.BaseFragment
 import me.hafizdwp.jetpack_submission_1.data.DummyData
 import me.hafizdwp.jetpack_submission_1.data.model.TvShowModel
 import me.hafizdwp.jetpack_submission_1.ui.MainActivity
+import me.hafizdwp.jetpack_submission_1.ui.detail.DetailActivity
+import me.hafizdwp.jetpack_submission_1.utils.obtainViewModel
 
 /**
  * @author hafizdwp
  * 11/11/2019
  **/
-class TvShowFragment : BaseFragment<MainActivity>(), TvShowActionListener {
+class TvShowFragment : BaseFragment<MainActivity, TvShowViewModel>(), TvShowActionListener {
 
     companion object {
         fun newInstance() = TvShowFragment()
@@ -20,13 +22,18 @@ class TvShowFragment : BaseFragment<MainActivity>(), TvShowActionListener {
 
     override val layoutRes: Int
         get() = R.layout.tv_show_fragment
+    override val mViewModel: TvShowViewModel
+        get() = obtainViewModel()
 
     var mAdapter: TvShowAdapter? = null
 
 
     override fun onReady() {
+
+        val listTvShows = mViewModel.getListTvShows()
+
         mAdapter = TvShowAdapter(
-                items = DummyData.TvShows.getListTvShows(),
+                items = listTvShows,
                 listener = this@TvShowFragment)
 
         recyclerView.apply {
@@ -40,6 +47,8 @@ class TvShowFragment : BaseFragment<MainActivity>(), TvShowActionListener {
      * ---------------------------------------------------------------------------------------------
      * */
     override fun onTvShowClick(data: TvShowModel) {
-
+        DetailActivity.startActivity(
+                context = mContext,
+                tvShowModel = data)
     }
 }

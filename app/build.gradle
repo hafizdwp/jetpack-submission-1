@@ -5,8 +5,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
+
     defaultConfig {
         applicationId "me.hafizdwp.jetpack_submission_1"
         minSdkVersion 21
@@ -15,11 +17,16 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    androidExtensions {
+        experimental = true
     }
 }
 
