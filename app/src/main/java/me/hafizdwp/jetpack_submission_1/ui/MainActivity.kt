@@ -1,6 +1,6 @@
 package me.hafizdwp.jetpack_submission_1.ui
 
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_activity.*
 import me.hafizdwp.jetpack_submission_1.R
 import me.hafizdwp.jetpack_submission_1.base.BaseActivity
 import me.hafizdwp.jetpack_submission_1.base.BasePagerAdapter
@@ -14,7 +14,7 @@ import me.hafizdwp.jetpack_submission_1.ui.tv_show.TvShowFragment
 class MainActivity : BaseActivity() {
 
     override val layoutRes: Int
-        get() = R.layout.activity_main
+        get() = R.layout.main_activity
 
     var mPagerAdapter: BasePagerAdapter? = null
 

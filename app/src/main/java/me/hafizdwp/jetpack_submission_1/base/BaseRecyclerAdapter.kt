@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
  * 11/11/2019
  **/
 abstract class BaseRecyclerAdapter<MODEL> :
-        RecyclerView.Adapter<BaseRecyclerAdapter<MODEL>.BaseViewHolder>() {
+    RecyclerView.Adapter<BaseRecyclerAdapter<MODEL>.BaseViewHolder>() {
 
     @get:LayoutRes
     abstract val itemLayoutRes: Int
@@ -20,7 +20,7 @@ abstract class BaseRecyclerAdapter<MODEL> :
     abstract fun onBind(itemView: View, model: MODEL)
 
     open val useOnBindCustom: Boolean = false
-    open fun onBindCustom(model: MODEL, layoutPosition: Int) {}
+    open fun onBindCustom(itemView: View, model: MODEL, layoutPosition: Int) {}
 
     open fun onGetItemCount(): Int {
         return mListItem.size
@@ -41,7 +41,10 @@ abstract class BaseRecyclerAdapter<MODEL> :
 
     inner class BaseViewHolder(private val mItemView: View) : RecyclerView.ViewHolder(mItemView) {
         fun bind(model: MODEL) {
-            onBind(mItemView, model)
+            if (useOnBindCustom)
+                onBindCustom(mItemView, model, layoutPosition)
+            else
+                onBind(mItemView, model)
         }
     }
 }
