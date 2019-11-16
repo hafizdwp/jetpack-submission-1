@@ -1,12 +1,14 @@
 package me.hafizdwp.jetpack_submission_1.ui.tv_show
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.tv_show_fragment.*
 import me.hafizdwp.jetpack_submission_1.R
-import me.hafizdwp.jetpack_submission_1.base.BaseFragment
-import me.hafizdwp.jetpack_submission_1.data.DummyData
 import me.hafizdwp.jetpack_submission_1.data.model.TvShowModel
-import me.hafizdwp.jetpack_submission_1.ui.MainActivity
 import me.hafizdwp.jetpack_submission_1.ui.detail.DetailActivity
 import me.hafizdwp.jetpack_submission_1.utils.obtainViewModel
 
@@ -14,21 +16,24 @@ import me.hafizdwp.jetpack_submission_1.utils.obtainViewModel
  * @author hafizdwp
  * 11/11/2019
  **/
-class TvShowFragment : BaseFragment<MainActivity, TvShowViewModel>(), TvShowActionListener {
+class TvShowFragment : Fragment(), TvShowActionListener {
 
     companion object {
         fun newInstance() = TvShowFragment()
     }
 
-    override val layoutRes: Int
-        get() = R.layout.tv_show_fragment
-    override val mViewModel: TvShowViewModel
-        get() = obtainViewModel()
-
+    lateinit var mViewModel: TvShowViewModel
     var mAdapter: TvShowAdapter? = null
 
 
-    override fun onReady() {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.tv_show_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mViewModel = obtainViewModel()
 
         val listTvShows = mViewModel.getListTvShows()
 
@@ -38,7 +43,7 @@ class TvShowFragment : BaseFragment<MainActivity, TvShowViewModel>(), TvShowActi
 
         recyclerView.apply {
             adapter = mAdapter
-            layoutManager = GridLayoutManager(mContext, 3)
+            layoutManager = GridLayoutManager(requireContext(), 3)
         }
     }
 
@@ -48,7 +53,7 @@ class TvShowFragment : BaseFragment<MainActivity, TvShowViewModel>(), TvShowActi
      * */
     override fun onTvShowClick(data: TvShowModel) {
         DetailActivity.startActivity(
-                context = mContext,
+                context = requireContext(),
                 tvShowModel = data)
     }
 }

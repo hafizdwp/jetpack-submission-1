@@ -1,17 +1,14 @@
-package me.hafizdwp.jetpack_submission_1.data
+package me.hafizdwp.jetpack_submission_1.utils
 
-import me.hafizdwp.jetpack_submission_1.MyApp
 import me.hafizdwp.jetpack_submission_1.R
 import me.hafizdwp.jetpack_submission_1.data.model.MovieModel
 import me.hafizdwp.jetpack_submission_1.data.model.TvShowModel
 
 /**
  * @author hafizdwp
- * 11/11/2019
+ * 16/11/2019
  **/
-object DummyData {
-
-    private val resources = MyApp.getContext().resources
+object FakeDataDummy {
 
     object Movies {
 

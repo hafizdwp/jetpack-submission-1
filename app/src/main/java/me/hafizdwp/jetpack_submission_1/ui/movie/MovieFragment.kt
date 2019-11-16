@@ -1,5 +1,10 @@
 package me.hafizdwp.jetpack_submission_1.ui.movie
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.movie_fragment.*
 import me.hafizdwp.jetpack_submission_1.R
@@ -13,21 +18,24 @@ import me.hafizdwp.jetpack_submission_1.utils.obtainViewModel
  * @author hafizdwp
  * 11/11/2019
  **/
-class MovieFragment : BaseFragment<MainActivity, MovieViewModel>(), MovieActionListener {
+class MovieFragment : Fragment() , MovieActionListener {
 
     companion object {
         fun newInstance() = MovieFragment()
     }
 
-    override val layoutRes: Int
-        get() = R.layout.movie_fragment
-    override val mViewModel: MovieViewModel
-        get() = obtainViewModel()
-
+    lateinit var mViewModel: MovieViewModel
     var mAdapter: MovieAdapter? = null
 
 
-    override fun onReady() {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.movie_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mViewModel = obtainViewModel()
 
         val listMovies = mViewModel.getListMovie()
 
@@ -38,7 +46,7 @@ class MovieFragment : BaseFragment<MainActivity, MovieViewModel>(), MovieActionL
 
         recyclerView.apply {
             adapter = mAdapter
-            layoutManager = GridLayoutManager(mContext, 6).apply {
+            layoutManager = GridLayoutManager(requireContext(), 6).apply {
                 spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int {
                         return when (position) {
@@ -58,7 +66,7 @@ class MovieFragment : BaseFragment<MainActivity, MovieViewModel>(), MovieActionL
      * */
     override fun onMovieClick(data: MovieModel) {
         DetailActivity.startActivity(
-                context = mContext,
+                context = requireContext(),
                 movieModel = data)
     }
 }
