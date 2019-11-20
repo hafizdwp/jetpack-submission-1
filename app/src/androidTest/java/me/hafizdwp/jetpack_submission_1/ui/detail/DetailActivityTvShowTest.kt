@@ -15,7 +15,7 @@ import org.junit.Test
  * @author hafizdwp
  * 16/11/2019
  */
-class DetailActivityTest {
+class DetailActivityTvShowTest {
 
     /*
     * 0. back button tampil
@@ -27,14 +27,14 @@ class DetailActivityTest {
     * 6. desc tampil
     * */
 
-    val dummyMovieData = FakeDataDummy.Movies.getListMovies()[0]
+    val fakeTvShowData = FakeDataDummy.TvShows.getListTvShows()[0]
 
     @get:Rule
     val activityRule = object : ActivityTestRule<DetailActivity>(DetailActivity::class.java) {
         override fun getActivityIntent(): Intent {
             val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
             val result = Intent(targetContext, DetailActivity::class.java)
-            result.putExtra(DetailActivity.EXTRA_MOVIE_DATA, dummyMovieData)
+            result.putExtra(DetailActivity.EXTRA_TVSHOW_DATA, fakeTvShowData)
             return result
         }
     }
@@ -51,7 +51,7 @@ class DetailActivityTest {
         // title
         onView(withId(R.id.textTitle)).apply {
             check(matches(isDisplayed()))
-            check(matches(withText(dummyMovieData.title)))
+            check(matches(withText(fakeTvShowData.title)))
         }
 
         // rating bar
@@ -60,7 +60,7 @@ class DetailActivityTest {
         // rating bar text
         onView(withId(R.id.textRating)).apply {
             check(matches(isDisplayed()))
-            check(matches(withText((dummyMovieData.rating.toFloat() / 10).toString())))
+            check(matches(withText((fakeTvShowData.rating.toFloat() / 10).toString())))
         }
 
         // desc label
@@ -69,7 +69,7 @@ class DetailActivityTest {
         // desc
         onView(withId(R.id.textDesc)).apply {
             check(matches(isDisplayed()))
-            check(matches(withText(dummyMovieData.desc)))
+            check(matches(withText(fakeTvShowData.desc)))
         }
     }
 

@@ -16,10 +16,10 @@ object DummyData {
     object Movies {
 
         private fun getListTitle() = listOf(
-                "Avengers\\: Infinity War",
-                "Spider-Man\\: Into the Spider-Verse",
+                "Avengers: Infinity War",
+                "Spider-Man: Into the Spider-Verse",
                 "Venom",
-                "Avengers\\Bohemian Rhapsody",
+                "Bohemian Rhapsody",
                 "Robin Hood",
                 "Bumblebee",
                 "Aquaman",
@@ -30,7 +30,7 @@ object DummyData {
 
         private fun getListShortDesc() = listOf(
                 "As the Avengers and their allies have continued to protect the world from threats too large for any onehero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy",
-                "Miles Morales is juggling his life between being a high school student and being a spider-man. When Wilson\\\"Kingpin\\\" Fisk uses a super collider, others from across the Spider-Verse are transported to this dimension.",
+                "Miles Morales is juggling his life between being a high school student and being a spider-man. When Wilson 'Kingpin' Fisk uses a super collider, others from across the Spider-Verse are transported to this dimension.",
                 "Investigative journalist Eddie Brock attempts a comeback following a scandal, but accidentally becomes the host of Venom, a violent, super powerful alien symbiote. Soon, he must rely on his newfound powers toprotect",
                 "Singer Freddie Mercury, guitarist Brian May, drummer Roger Taylor and bass guitarist John Deacon take the music world by storm when they form the rock n roll band Queen in 1970. Hit songs become instant classics.",
                 "A war-hardened Crusader and his Moorish commander mount an audacious revolt against the corrupt English crown.",
@@ -43,7 +43,7 @@ object DummyData {
 
         private fun getListDesc() = listOf(
                 "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.",
-                "Miles Morales is juggling his life between being a high school student and being a spider-man. When Wilson \\\"Kingpin\\\" Fisk uses a super collider, others from across the Spider-Verse are transported to this dimension.",
+                "Miles Morales is juggling his life between being a high school student and being a spider-man. When Wilson 'Kingpin' Fisk uses a super collider, others from across the Spider-Verse are transported to this dimension.",
                 "Investigative journalist Eddie Brock attempts a comeback following a scandal, but accidentally becomes the host of Venom, a violent, super powerful alien symbiote. Soon, he must rely on his newfound powers to protect the world from a shadowy organization looking for a symbiote of their own.",
                 "Singer Freddie Mercury, guitarist Brian May, drummer Roger Taylor and bass guitarist John Deacon take the music world by storm when they form the rock n roll band Queen in 1970. Hit songs become instant classics. When Mercurys increasingly wild lifestyle starts to spiral out of control, Queen soon faces its greatest challenge yet – finding a way to keep the band together amid the success and excess.",
                 "A war-hardened Crusader and his Moorish commander mount an audacious revolt against the corrupt Englishcrown.",
